@@ -295,6 +295,7 @@ export function SchedulerApp() {
 
     const newEpisode: Episode = {
       id: `ep_${crypto.randomUUID()}`,
+      showId: "show_default",
       title: episodeDraft.title.trim(),
       guest: episodeDraft.guest.trim(),
       description: episodeDraft.description.trim(),
@@ -305,6 +306,8 @@ export function SchedulerApp() {
         .split(",")
         .map((platform) => platform.trim())
         .filter(Boolean),
+      tags: [],
+      notes: "",
     };
 
     if (!newEpisode.title) {

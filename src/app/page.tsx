@@ -1,5 +1,5 @@
-import { SchedulerApp } from "@/components/SchedulerApp";
+import { LandingPage } from "@/components/LandingPage";
 
 export default function Home() {
-  return <SchedulerApp />;
+  return <LandingPage />;
 }
