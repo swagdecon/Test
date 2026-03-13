@@ -48,20 +48,20 @@ export function LandingPage() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
   return (
-    <div className="min-h-screen bg-white text-slate-900">
-      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur-lg">
+    <div className="min-h-screen bg-black text-white">
+      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-zinc-800 bg-black/80 backdrop-blur-lg">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm font-bold text-white">P</div>
             <span className="text-lg font-bold">PodFlow</span>
           </div>
           <div className="hidden items-center gap-8 md:flex">
-            <a href="#features" className="text-sm text-slate-600 hover:text-slate-900">Features</a>
-            <a href="#pricing" className="text-sm text-slate-600 hover:text-slate-900">Pricing</a>
-            <a href="#faq" className="text-sm text-slate-600 hover:text-slate-900">FAQ</a>
+            <a href="#features" className="text-sm text-zinc-400 hover:text-white">Features</a>
+            <a href="#pricing" className="text-sm text-zinc-400 hover:text-white">Pricing</a>
+            <a href="#faq" className="text-sm text-zinc-400 hover:text-white">FAQ</a>
           </div>
           <div className="flex items-center gap-3">
-            <Link href="/app" className="text-sm font-medium text-slate-600 hover:text-slate-900">Log in</Link>
+            <Link href="/app" className="text-sm font-medium text-zinc-400 hover:text-white">Log in</Link>
             <Link href="/app" className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
               Get Started
             </Link>
@@ -71,31 +71,31 @@ export function LandingPage() {
 
       <section className="relative overflow-hidden pt-32 pb-20">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-indigo-100/50 blur-3xl" />
-          <div className="absolute right-0 top-1/3 h-[400px] w-[400px] rounded-full bg-purple-100/40 blur-3xl" />
+          <div className="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-indigo-950/50 blur-3xl" />
+          <div className="absolute right-0 top-1/3 h-[400px] w-[400px] rounded-full bg-purple-950/40 blur-3xl" />
         </div>
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-1.5 text-sm font-medium text-indigo-700 mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full bg-indigo-950 px-4 py-1.5 text-sm font-medium text-indigo-400 mb-6">
             <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" />
             AI-Powered Podcast Management
           </div>
           <h1 className="mx-auto max-w-4xl text-5xl font-extrabold leading-tight tracking-tight md:text-7xl">
             Plan, Produce & Publish<br />
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Your Best Podcasts</span>
+            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">Your Best Podcasts</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-600 md:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400 md:text-xl">
             The all-in-one scheduler with AI episode planning, production pipeline, guest CRM, 
             analytics, and one-click publishing to every platform.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/app" className="rounded-xl bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all">
+            <Link href="/app" className="rounded-xl bg-indigo-600 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-indigo-900/50 hover:bg-indigo-700 transition-all">
               Start Free — No Credit Card
             </Link>
-            <a href="#features" className="rounded-xl border border-slate-200 bg-white px-8 py-3.5 text-base font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition-all">
+            <a href="#features" className="rounded-xl border border-zinc-700 bg-zinc-900 px-8 py-3.5 text-base font-semibold text-zinc-300 shadow-sm hover:bg-zinc-800 transition-all">
               See All Features
             </a>
           </div>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-500">
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-zinc-500">
             <span className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> Free forever plan</span>
             <span className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> No credit card required</span>
             <span className="flex items-center gap-1.5"><span className="text-emerald-500">✓</span> AI-powered features</span>
@@ -103,17 +103,17 @@ export function LandingPage() {
         </div>
 
         <div className="mx-auto mt-16 max-w-6xl px-6">
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/50">
-            <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50 px-4 py-3">
-              <div className="h-3 w-3 rounded-full bg-red-400" />
-              <div className="h-3 w-3 rounded-full bg-yellow-400" />
-              <div className="h-3 w-3 rounded-full bg-green-400" />
-              <span className="ml-2 text-xs text-slate-400">PodFlow Scheduler — Dashboard</span>
+          <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl shadow-black/50">
+            <div className="flex items-center gap-2 border-b border-zinc-800 bg-zinc-950 px-4 py-3">
+              <div className="h-3 w-3 rounded-full bg-red-500" />
+              <div className="h-3 w-3 rounded-full bg-yellow-500" />
+              <div className="h-3 w-3 rounded-full bg-green-500" />
+              <span className="ml-2 text-xs text-zinc-500">PodFlow Scheduler — Dashboard</span>
             </div>
             <div className="grid grid-cols-12 gap-0">
-              <div className="col-span-3 border-r border-slate-100 bg-slate-50 p-4">
+              <div className="col-span-3 border-r border-zinc-800 bg-zinc-950 p-4">
                 {["Overview", "Episodes", "Calendar", "Pipeline", "AI Studio", "Guests", "Seasons", "Analytics"].map((item, i) => (
-                  <div key={item} className={`mb-1 rounded-lg px-3 py-2 text-sm ${i === 0 ? "bg-indigo-100 font-medium text-indigo-700" : "text-slate-600"}`}>
+                  <div key={item} className={`mb-1 rounded-lg px-3 py-2 text-sm ${i === 0 ? "bg-indigo-950 font-medium text-indigo-400" : "text-zinc-400"}`}>
                     {item}
                   </div>
                 ))}
@@ -121,18 +121,18 @@ export function LandingPage() {
               <div className="col-span-9 p-6">
                 <div className="grid grid-cols-3 gap-4 mb-6">
                   {[{ label: "Episodes", value: "24", sub: "+3 this week" }, { label: "Downloads", value: "12.4K", sub: "+18% MoM" }, { label: "Consistency", value: "94%", sub: "12-week streak" }].map((s) => (
-                    <div key={s.label} className="rounded-xl border border-slate-200 p-4">
-                      <p className="text-xs text-slate-500">{s.label}</p>
+                    <div key={s.label} className="rounded-xl border border-zinc-800 p-4">
+                      <p className="text-xs text-zinc-500">{s.label}</p>
                       <p className="text-2xl font-bold">{s.value}</p>
-                      <p className="text-xs text-emerald-600">{s.sub}</p>
+                      <p className="text-xs text-emerald-500">{s.sub}</p>
                     </div>
                   ))}
                 </div>
                 <div className="grid grid-cols-7 gap-1">
                   {Array.from({ length: 14 }).map((_, i) => (
-                    <div key={i} className="h-12 rounded-lg border border-slate-100 bg-slate-50 p-1">
-                      <div className="text-[10px] text-slate-400">{i + 1}</div>
-                      {i % 3 === 0 && <div className="mt-0.5 h-2 rounded bg-indigo-200" />}
+                    <div key={i} className="h-12 rounded-lg border border-zinc-800 bg-zinc-950 p-1">
+                      <div className="text-[10px] text-zinc-500">{i + 1}</div>
+                      {i % 3 === 0 && <div className="mt-0.5 h-2 rounded bg-indigo-800" />}
                     </div>
                   ))}
                 </div>
@@ -142,55 +142,55 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="features" className="py-20 bg-slate-50">
+      <section id="features" className="py-20 bg-zinc-950">
         <div className="mx-auto max-w-7xl px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold md:text-4xl">Everything You Need to Podcast Like a Pro</h2>
-            <p className="mt-4 text-lg text-slate-600">22+ features designed to save time, add intelligence, and create a wow factor.</p>
+            <p className="mt-4 text-lg text-zinc-400">22+ features designed to save time, add intelligence, and create a wow factor.</p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {FEATURES.map((f) => (
-              <div key={f.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div key={f.title} className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 shadow-sm hover:border-zinc-700 transition-colors">
                 <div className="mb-3 text-3xl">{f.icon}</div>
                 <h3 className="text-base font-semibold">{f.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{f.desc}</p>
+                <p className="mt-2 text-sm text-zinc-400">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="pricing" className="py-20">
+      <section id="pricing" className="py-20 bg-black">
         <div className="mx-auto max-w-5xl px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold md:text-4xl">Simple, Transparent Pricing</h2>
-            <p className="mt-4 text-lg text-slate-600">Start free, upgrade when you&apos;re ready to go pro.</p>
-            <div className="mt-6 inline-flex items-center rounded-full bg-slate-100 p-1">
-              <button onClick={() => setBillingCycle("monthly")} className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${billingCycle === "monthly" ? "bg-white shadow-sm text-slate-900" : "text-slate-500"}`}>
+            <p className="mt-4 text-lg text-zinc-400">Start free, upgrade when you&apos;re ready to go pro.</p>
+            <div className="mt-6 inline-flex items-center rounded-full bg-zinc-900 p-1">
+              <button onClick={() => setBillingCycle("monthly")} className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${billingCycle === "monthly" ? "bg-zinc-700 shadow-sm text-white" : "text-zinc-500"}`}>
                 Monthly
               </button>
-              <button onClick={() => setBillingCycle("yearly")} className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${billingCycle === "yearly" ? "bg-white shadow-sm text-slate-900" : "text-slate-500"}`}>
-                Yearly <span className="text-emerald-600 text-xs">Save 17%</span>
+              <button onClick={() => setBillingCycle("yearly")} className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${billingCycle === "yearly" ? "bg-zinc-700 shadow-sm text-white" : "text-zinc-500"}`}>
+                Yearly <span className="text-emerald-500 text-xs">Save 17%</span>
               </button>
             </div>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2">
             {PRICING_TIERS.map((tier) => (
-              <div key={tier.name} className={`rounded-2xl border p-8 ${tier.highlighted ? "border-indigo-200 bg-indigo-50/50 shadow-lg ring-2 ring-indigo-600" : "border-slate-200 bg-white"}`}>
+              <div key={tier.name} className={`rounded-2xl border p-8 ${tier.highlighted ? "border-indigo-700 bg-indigo-950/30 shadow-lg ring-2 ring-indigo-600" : "border-zinc-800 bg-zinc-900"}`}>
                 {tier.highlighted && <div className="mb-4 inline-block rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">Most Popular</div>}
                 <h3 className="text-xl font-bold">{tier.name}</h3>
-                <p className="mt-1 text-sm text-slate-600">{tier.desc}</p>
+                <p className="mt-1 text-sm text-zinc-400">{tier.desc}</p>
                 <div className="mt-4">
                   <span className="text-4xl font-extrabold">{tier.name === "Pro" && billingCycle === "yearly" ? "$10" : tier.price}</span>
-                  <span className="text-slate-500">{tier.name === "Pro" ? (billingCycle === "yearly" ? "/month billed yearly" : tier.period) : ""}</span>
+                  <span className="text-zinc-500">{tier.name === "Pro" ? (billingCycle === "yearly" ? "/month billed yearly" : tier.period) : ""}</span>
                 </div>
-                <Link href="/app" className={`mt-6 block rounded-xl px-6 py-3 text-center text-sm font-semibold transition-all ${tier.highlighted ? "bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg shadow-indigo-200" : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50"}`}>
+                <Link href="/app" className={`mt-6 block rounded-xl px-6 py-3 text-center text-sm font-semibold transition-all ${tier.highlighted ? "bg-indigo-600 text-white hover:bg-indigo-700 shadow-lg shadow-indigo-900/50" : "border border-zinc-700 bg-zinc-800 text-zinc-300 hover:bg-zinc-700"}`}>
                   {tier.cta}
                 </Link>
                 <ul className="mt-6 space-y-2.5">
                   {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2 text-sm text-slate-700">
+                    <li key={f} className="flex items-start gap-2 text-sm text-zinc-300">
                       <span className="mt-0.5 text-emerald-500">✓</span>{f}
                     </li>
                   ))}
@@ -201,7 +201,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="faq" className="py-20 bg-slate-50">
+      <section id="faq" className="py-20 bg-zinc-950">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-center text-3xl font-bold mb-12">Frequently Asked Questions</h2>
           {[
@@ -210,31 +210,31 @@ export function LandingPage() {
             { q: "How does the AI work?", a: "Our AI generates episode outlines, guest research, title suggestions, and clip recommendations based on your topic and content. It runs entirely in-app." },
             { q: "Can I publish directly to platforms?", a: "Pro users can connect Spotify, Apple Podcasts, and YouTube for one-click publishing. Free users can export ICS and manage scheduling manually." },
           ].map(({ q, a }) => (
-            <div key={q} className="mb-6 rounded-2xl border border-slate-200 bg-white p-6">
+            <div key={q} className="mb-6 rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
               <h3 className="font-semibold">{q}</h3>
-              <p className="mt-2 text-sm text-slate-600">{a}</p>
+              <p className="mt-2 text-sm text-zinc-400">{a}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 bg-black">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-3xl font-bold md:text-4xl">Ready to Level Up Your Podcast?</h2>
-          <p className="mt-4 text-lg text-slate-600">Join thousands of podcasters who plan, produce, and publish with PodFlow.</p>
-          <Link href="/app" className="mt-8 inline-block rounded-xl bg-indigo-600 px-10 py-4 text-base font-semibold text-white shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all">
+          <p className="mt-4 text-lg text-zinc-400">Join thousands of podcasters who plan, produce, and publish with PodFlow.</p>
+          <Link href="/app" className="mt-8 inline-block rounded-xl bg-indigo-600 px-10 py-4 text-base font-semibold text-white shadow-lg shadow-indigo-900/50 hover:bg-indigo-700 transition-all">
             Get Started for Free
           </Link>
         </div>
       </section>
 
-      <footer className="border-t border-slate-200 py-8">
+      <footer className="border-t border-zinc-800 py-8 bg-black">
         <div className="mx-auto max-w-7xl px-6 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded bg-indigo-600 text-xs font-bold text-white">P</div>
             <span className="text-sm font-semibold">PodFlow Scheduler</span>
           </div>
-          <p className="text-sm text-slate-500">&copy; {new Date().getFullYear()} PodFlow. All rights reserved.</p>
+          <p className="text-sm text-zinc-500">&copy; {new Date().getFullYear()} PodFlow. All rights reserved.</p>
         </div>
       </footer>
     </div>

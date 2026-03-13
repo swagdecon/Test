@@ -419,26 +419,26 @@ export function Dashboard() {
     });
   }
 
-  if (!hydrated) return <div className="flex min-h-screen items-center justify-center text-slate-500">Loading PodFlow...</div>;
+  if (!hydrated) return <div className="flex min-h-screen items-center justify-center text-zinc-500">Loading PodFlow...</div>;
 
-  const card = "rounded-2xl border border-slate-200 bg-white p-5 shadow-sm";
+  const card = "rounded-2xl border border-zinc-800 bg-zinc-900 p-5";
   const btnPrimary = "rounded-lg bg-[color:var(--accent)] px-4 py-2 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50";
-  const btnSecondary = "rounded-lg border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50";
-  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm";
-  const labelCls = "block text-xs font-semibold uppercase text-slate-500 mb-1";
+  const btnSecondary = "rounded-lg border border-zinc-700 px-4 py-2 text-sm hover:bg-zinc-800 text-zinc-300";
+  const inputCls = "w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm text-white placeholder-zinc-500";
+  const labelCls = "block text-xs font-semibold uppercase text-zinc-500 mb-1";
 
   return (
-    <div className="flex min-h-screen bg-slate-50 text-slate-900" style={{ ["--accent" as string]: accentColor }}>
+    <div className="flex min-h-screen bg-black text-white" style={{ ["--accent" as string]: accentColor }}>
       {/* Sidebar */}
-      <aside className={`${sidebarOpen ? "w-56" : "w-14"} shrink-0 border-r border-slate-200 bg-white transition-all duration-200 flex flex-col`}>
-        <div className="flex items-center gap-2 border-b border-slate-100 p-3">
+      <aside className={`${sidebarOpen ? "w-56" : "w-14"} shrink-0 border-r border-zinc-800 bg-zinc-950 transition-all duration-200 flex flex-col`}>
+        <div className="flex items-center gap-2 border-b border-zinc-800 p-3">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[color:var(--accent)] text-sm font-bold text-white shrink-0">P</div>
           {sidebarOpen && <span className="text-sm font-bold truncate">PodFlow</span>}
-          <button onClick={() => setSidebarOpen(!sidebarOpen)} className="ml-auto text-slate-400 hover:text-slate-700 text-xs shrink-0">{sidebarOpen ? "◀" : "▶"}</button>
+          <button onClick={() => setSidebarOpen(!sidebarOpen)} className="ml-auto text-zinc-500 hover:text-white text-xs shrink-0">{sidebarOpen ? "◀" : "▶"}</button>
         </div>
         {sidebarOpen && state.shows.length > 1 && (
-          <div className="border-b border-slate-100 p-2">
-            <select value={state.activeShowId} onChange={(e) => setState((prev) => ({ ...prev, activeShowId: e.target.value }))} className="w-full rounded border border-slate-200 px-2 py-1 text-xs">
+          <div className="border-b border-zinc-800 p-2">
+            <select value={state.activeShowId} onChange={(e) => setState((prev) => ({ ...prev, activeShowId: e.target.value }))} className="w-full rounded border border-zinc-700 bg-zinc-800 px-2 py-1 text-xs text-white">
               {state.shows.map((s) => <option key={s.id} value={s.id}>{s.name}</option>)}
             </select>
           </div>
@@ -446,15 +446,15 @@ export function Dashboard() {
         <nav className="flex-1 overflow-y-auto p-2 space-y-0.5">
           {NAV_ITEMS.map((item) => (
             <button key={item.key} onClick={() => setView(item.key)}
-              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm transition-colors ${view === item.key ? "bg-[color:var(--accent)]/10 font-medium text-[color:var(--accent)]" : "text-slate-600 hover:bg-slate-50"}`}>
+              className={`flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm transition-colors ${view === item.key ? "bg-[color:var(--accent)]/10 font-medium text-[color:var(--accent)]" : "text-zinc-400 hover:bg-zinc-800"}`}>
               <span className="text-base shrink-0">{item.icon}</span>
               {sidebarOpen && <span className="truncate">{item.label}</span>}
             </button>
           ))}
         </nav>
         {sidebarOpen && (
-          <div className="border-t border-slate-100 p-3">
-            <div className="rounded-lg bg-slate-50 px-3 py-2 text-xs">
+          <div className="border-t border-zinc-800 p-3">
+            <div className="rounded-lg bg-zinc-800 px-3 py-2 text-xs">
               <span className="font-semibold uppercase">{state.plan}</span> plan
               {state.plan === "free" && <button onClick={() => setView("settings")} className="ml-1 text-[color:var(--accent)] underline">Upgrade</button>}
             </div>
@@ -464,10 +464,10 @@ export function Dashboard() {
 
       {/* Main Content */}
       <main className="flex-1 overflow-y-auto">
-        <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/80 backdrop-blur-sm px-6 py-3 flex items-center justify-between">
+        <header className="sticky top-0 z-10 border-b border-zinc-800 bg-black/80 backdrop-blur-sm px-6 py-3 flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold capitalize">{view.replace("-", " ")}</h1>
-            {activeShow && <p className="text-xs text-slate-500">{activeShow.name}</p>}
+            {activeShow && <p className="text-xs text-zinc-500">{activeShow.name}</p>}
           </div>
           <div className="flex items-center gap-3">
             {statusMessage && <p className="text-sm text-[color:var(--accent)] animate-pulse">{statusMessage}</p>}
@@ -481,7 +481,7 @@ export function Dashboard() {
             <div className="grid gap-6 xl:grid-cols-[1fr_1fr]">
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">Schedule Episode</h2>
-                <p className="text-sm text-slate-500 mb-4">{canCreate ? "Add a new episode." : "Free limit reached."}</p>
+                <p className="text-sm text-zinc-500 mb-4">{canCreate ? "Add a new episode." : "Free limit reached."}</p>
                 <form className="space-y-3" onSubmit={handleEpisodeSubmit}>
                   <input required value={episodeDraft.title} onChange={(e) => setEpisodeDraft((p) => ({ ...p, title: e.target.value }))} placeholder="Episode title" className={inputCls} />
                   <input value={episodeDraft.guest} onChange={(e) => setEpisodeDraft((p) => ({ ...p, guest: e.target.value }))} placeholder="Guest (optional)" className={inputCls} />
@@ -504,14 +504,14 @@ export function Dashboard() {
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-4">All Episodes ({showEpisodes.length})</h2>
                 <div className="max-h-[600px] space-y-2 overflow-auto">
-                  {showEpisodes.length === 0 && <p className="text-sm text-slate-500">No episodes yet.</p>}
+                  {showEpisodes.length === 0 && <p className="text-sm text-zinc-500">No episodes yet.</p>}
                   {[...showEpisodes].sort((a, b) => new Date(b.publishAt).getTime() - new Date(a.publishAt).getTime()).map((ep) => (
-                    <div key={ep.id} className="rounded-xl border border-slate-200 p-3 hover:bg-slate-50">
+                    <div key={ep.id} className="rounded-xl border border-zinc-800 p-3 hover:bg-zinc-950">
                       <div className="flex items-start justify-between gap-2">
                         <div className="min-w-0">
                           <p className="font-medium truncate">{ep.title}</p>
-                          <p className="text-xs text-slate-500">{format(parseISO(ep.publishAt), "MMM d, yyyy HH:mm")} · {ep.durationMinutes}min</p>
-                          {ep.guest && <p className="text-xs text-slate-400">Guest: {ep.guest}</p>}
+                          <p className="text-xs text-zinc-500">{format(parseISO(ep.publishAt), "MMM d, yyyy HH:mm")} · {ep.durationMinutes}min</p>
+                          {ep.guest && <p className="text-xs text-zinc-500">Guest: {ep.guest}</p>}
                         </div>
                         <div className="flex items-center gap-1 shrink-0">
                           <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase text-white" style={{ backgroundColor: STAGE_COLORS[ep.status] || "#94a3b8" }}>{ep.status}</span>
@@ -535,8 +535,8 @@ export function Dashboard() {
                   <button onClick={() => setCurrentMonth((p) => addMonths(p, 1))} className={btnSecondary}>Next</button>
                 </div>
               </div>
-              <p className="text-xs text-slate-500 mb-3">Drag and drop episodes between days to reschedule.</p>
-              <div className="grid grid-cols-7 gap-1 text-xs font-semibold uppercase text-slate-500 mb-1">
+              <p className="text-xs text-zinc-500 mb-3">Drag and drop episodes between days to reschedule.</p>
+              <div className="grid grid-cols-7 gap-1 text-xs font-semibold uppercase text-zinc-500 mb-1">
                 {weekdayLabels.map((d) => <div key={d} className="px-2 py-1">{d}</div>)}
               </div>
               <div className="grid grid-cols-7 gap-1">
@@ -548,17 +548,17 @@ export function Dashboard() {
                       onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("ring-2", "ring-[color:var(--accent)]"); }}
                       onDragLeave={(e) => { e.currentTarget.classList.remove("ring-2", "ring-[color:var(--accent)]"); }}
                       onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("ring-2", "ring-[color:var(--accent)]"); if (draggedEpisodeId) { moveEpisodeToDate(draggedEpisodeId, key); setDraggedEpisodeId(null); } }}
-                      className={`min-h-24 rounded-xl border p-1.5 transition-all ${isSameMonth(day, currentMonth) ? "border-slate-200 bg-white" : "border-slate-100 bg-slate-50"} ${isToday(day) ? "ring-2 ring-[color:var(--accent)]" : ""}`}>
-                      <p className="text-xs font-semibold text-slate-500">{format(day, "d")}</p>
+                      className={`min-h-24 rounded-xl border p-1.5 transition-all ${isSameMonth(day, currentMonth) ? "border-zinc-800 bg-zinc-900" : "border-zinc-800 bg-zinc-950"} ${isToday(day) ? "ring-2 ring-[color:var(--accent)]" : ""}`}>
+                      <p className="text-xs font-semibold text-zinc-500">{format(day, "d")}</p>
                       <div className="mt-0.5 space-y-0.5">
                         {events.slice(0, 3).map((ev) => (
                           <div key={ev.id} draggable={ev.kind === "episode"}
                             onDragStart={() => { if (ev.kind === "episode") setDraggedEpisodeId(ev.id); }}
-                            className={`rounded px-1 py-0.5 text-[10px] truncate cursor-move ${ev.kind === "episode" ? "bg-[color:var(--accent)]/15 text-slate-900 font-medium" : "bg-slate-100 text-slate-600"}`}>
+                            className={`rounded px-1 py-0.5 text-[10px] truncate cursor-move ${ev.kind === "episode" ? "bg-[color:var(--accent)]/15 text-white font-medium" : "bg-zinc-800 text-zinc-400"}`}>
                             {format(ev.start, "HH:mm")} {ev.title}
                           </div>
                         ))}
-                        {events.length > 3 && <p className="text-[9px] text-slate-400">+{events.length - 3} more</p>}
+                        {events.length > 3 && <p className="text-[9px] text-zinc-500">+{events.length - 3} more</p>}
                       </div>
                     </div>
                   );
@@ -570,29 +570,29 @@ export function Dashboard() {
           {view === "pipeline" && (
             <div>
               <h2 className="text-lg font-semibold mb-4">Production Pipeline</h2>
-              <p className="text-sm text-slate-500 mb-4">Drag episodes across stages or use the dropdown to update status.</p>
+              <p className="text-sm text-zinc-500 mb-4">Drag episodes across stages or use the dropdown to update status.</p>
               <div className="flex gap-3 overflow-x-auto pb-4">
                 {PIPELINE_STAGES.map((stage) => {
                   const eps = showEpisodes.filter((ep) => ep.status === stage);
                   return (
-                    <div key={stage} className="min-w-[200px] flex-1 rounded-2xl border border-slate-200 bg-white p-3"
+                    <div key={stage} className="min-w-[200px] flex-1 rounded-2xl border border-zinc-800 bg-zinc-900 p-3"
                       onDragOver={(e) => e.preventDefault()}
                       onDrop={(e) => { e.preventDefault(); if (draggedEpisodeId) { updateEpisodeStatus(draggedEpisodeId, stage); setDraggedEpisodeId(null); } }}>
                       <div className="mb-3 flex items-center gap-2">
                         <div className="h-3 w-3 rounded-full" style={{ backgroundColor: STAGE_COLORS[stage] }} />
                         <h3 className="text-sm font-semibold capitalize">{stage}</h3>
-                        <span className="ml-auto rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium">{eps.length}</span>
+                        <span className="ml-auto rounded-full bg-zinc-800 px-2 py-0.5 text-[10px] font-medium">{eps.length}</span>
                       </div>
                       <div className="space-y-2">
                         {eps.map((ep) => (
                           <div key={ep.id} draggable onDragStart={() => setDraggedEpisodeId(ep.id)}
-                            className="cursor-move rounded-xl border border-slate-200 bg-slate-50 p-2.5 hover:shadow-sm transition-shadow">
+                            className="cursor-move rounded-xl border border-zinc-800 bg-zinc-950 p-2.5 hover:shadow-sm transition-shadow">
                             <p className="text-sm font-medium truncate">{ep.title}</p>
-                            <p className="text-[10px] text-slate-500">{format(parseISO(ep.publishAt), "MMM d")} · {ep.durationMinutes}m</p>
-                            {ep.guest && <p className="text-[10px] text-slate-400">{ep.guest}</p>}
+                            <p className="text-[10px] text-zinc-500">{format(parseISO(ep.publishAt), "MMM d")} · {ep.durationMinutes}m</p>
+                            {ep.guest && <p className="text-[10px] text-zinc-500">{ep.guest}</p>}
                           </div>
                         ))}
-                        {eps.length === 0 && <p className="text-xs text-slate-400 text-center py-4">Drop here</p>}
+                        {eps.length === 0 && <p className="text-xs text-zinc-500 text-center py-4">Drop here</p>}
                       </div>
                     </div>
                   );
@@ -606,7 +606,7 @@ export function Dashboard() {
               {/* AI Episode Planning */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">AI Episode Planning</h2>
-                <p className="text-xs text-slate-500 mb-3">Enter a topic to generate an outline, segments, and title suggestions.</p>
+                <p className="text-xs text-zinc-500 mb-3">Enter a topic to generate an outline, segments, and title suggestions.</p>
                 <div className="flex gap-2 mb-4">
                   <input value={aiTopic} onChange={(e) => setAiTopic(e.target.value)} placeholder="e.g. Future of Remote Work" className={inputCls} />
                   <button onClick={() => { if (aiTopic.trim()) setAiOutline(generateEpisodeOutline(aiTopic)); }} className={btnPrimary}>Generate</button>
@@ -614,21 +614,21 @@ export function Dashboard() {
                 {aiOutline && (
                   <div className="space-y-3 text-sm">
                     <div><p className={labelCls}>Suggested Title</p><p className="font-medium">{aiOutline.title}</p></div>
-                    <div><p className={labelCls}>Description</p><p className="text-slate-600">{aiOutline.description}</p></div>
+                    <div><p className={labelCls}>Description</p><p className="text-zinc-400">{aiOutline.description}</p></div>
                     <div><p className={labelCls}>Segments</p>
                       {aiOutline.segments.map((seg, i) => (
-                        <div key={i} className="flex items-center gap-2 py-1 border-b border-slate-100 last:border-0">
+                        <div key={i} className="flex items-center gap-2 py-1 border-b border-zinc-800 last:border-0">
                           <span className="text-xs font-medium text-[color:var(--accent)] w-12">{seg.durationMinutes}min</span>
                           <span className="font-medium">{seg.name}</span>
-                          <span className="text-xs text-slate-500 ml-auto truncate max-w-[200px]">{seg.notes}</span>
+                          <span className="text-xs text-zinc-500 ml-auto truncate max-w-[200px]">{seg.notes}</span>
                         </div>
                       ))}
                     </div>
                     <div><p className={labelCls}>Talking Points</p>
-                      <ul className="list-disc pl-4 space-y-1 text-slate-600">{aiOutline.talkingPoints.map((tp, i) => <li key={i}>{tp}</li>)}</ul>
+                      <ul className="list-disc pl-4 space-y-1 text-zinc-400">{aiOutline.talkingPoints.map((tp, i) => <li key={i}>{tp}</li>)}</ul>
                     </div>
                     <div><p className={labelCls}>Alternative Titles</p>
-                      <div className="flex flex-wrap gap-1">{aiOutline.suggestedTitles.map((t, i) => <span key={i} className="rounded-full bg-slate-100 px-2 py-0.5 text-xs">{t}</span>)}</div>
+                      <div className="flex flex-wrap gap-1">{aiOutline.suggestedTitles.map((t, i) => <span key={i} className="rounded-full bg-zinc-800 px-2 py-0.5 text-xs">{t}</span>)}</div>
                     </div>
                     <button onClick={() => { setEpisodeDraft((p) => ({ ...p, title: aiOutline!.title, description: aiOutline!.description })); setView("episodes"); flash("Applied AI outline to episode form."); }} className={btnPrimary}>Use This Outline</button>
                   </div>
@@ -638,22 +638,22 @@ export function Dashboard() {
               {/* Guest Research */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">Guest Research Assistant</h2>
-                <p className="text-xs text-slate-500 mb-3">Enter a guest name to generate bio, questions, and talking points.</p>
+                <p className="text-xs text-zinc-500 mb-3">Enter a guest name to generate bio, questions, and talking points.</p>
                 <div className="flex gap-2 mb-4">
                   <input value={guestSearchName} onChange={(e) => setGuestSearchName(e.target.value)} placeholder="e.g. Jane Smith" className={inputCls} />
                   <button onClick={() => { if (guestSearchName.trim()) setGuestResearch(generateGuestResearch(guestSearchName)); }} className={btnPrimary}>Research</button>
                 </div>
                 {guestResearch && (
                   <div className="space-y-3 text-sm">
-                    <div><p className={labelCls}>Bio</p><p className="text-slate-600">{guestResearch.bio}</p></div>
+                    <div><p className={labelCls}>Bio</p><p className="text-zinc-400">{guestResearch.bio}</p></div>
                     <div><p className={labelCls}>Interview Questions</p>
-                      <ol className="list-decimal pl-4 space-y-1 text-slate-600">{guestResearch.interviewQuestions.map((q, i) => <li key={i}>{q}</li>)}</ol>
+                      <ol className="list-decimal pl-4 space-y-1 text-zinc-400">{guestResearch.interviewQuestions.map((q, i) => <li key={i}>{q}</li>)}</ol>
                     </div>
                     <div><p className={labelCls}>Talking Points</p>
-                      <ul className="list-disc pl-4 space-y-1 text-slate-600">{guestResearch.talkingPoints.map((tp, i) => <li key={i}>{tp}</li>)}</ul>
+                      <ul className="list-disc pl-4 space-y-1 text-zinc-400">{guestResearch.talkingPoints.map((tp, i) => <li key={i}>{tp}</li>)}</ul>
                     </div>
                     <div><p className={labelCls}>Related Topics</p>
-                      <div className="flex flex-wrap gap-1">{guestResearch.relatedTopics.map((t, i) => <span key={i} className="rounded-full bg-slate-100 px-2 py-0.5 text-xs">{t}</span>)}</div>
+                      <div className="flex flex-wrap gap-1">{guestResearch.relatedTopics.map((t, i) => <span key={i} className="rounded-full bg-zinc-800 px-2 py-0.5 text-xs">{t}</span>)}</div>
                     </div>
                   </div>
                 )}
@@ -662,7 +662,7 @@ export function Dashboard() {
               {/* Transcript & Clips */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">Transcript & Clip Suggestions</h2>
-                <p className="text-xs text-slate-500 mb-3">Select an episode to get AI-suggested social clips and highlights.</p>
+                <p className="text-xs text-zinc-500 mb-3">Select an episode to get AI-suggested social clips and highlights.</p>
                 <select value={clipEpisodeId} onChange={(e) => { setClipEpisodeId(e.target.value); if (e.target.value) { const ep = state.episodes.find((ep) => ep.id === e.target.value); setClips(generateTranscriptClips(ep?.title || "")); } }} className={inputCls}>
                   <option value="">Select episode...</option>
                   {state.episodes.map((ep) => <option key={ep.id} value={ep.id}>{ep.title}</option>)}
@@ -670,13 +670,13 @@ export function Dashboard() {
                 {clips.length > 0 && (
                   <div className="mt-4 space-y-2">
                     {clips.map((clip) => (
-                      <div key={clip.id} className="rounded-xl border border-slate-200 p-3">
+                      <div key={clip.id} className="rounded-xl border border-zinc-800 p-3">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-xs font-medium text-[color:var(--accent)]">{clip.timestamp} · {clip.duration}</span>
-                          <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] capitalize">{clip.type.replace("_", " ")}</span>
+                          <span className="rounded-full bg-zinc-800 px-2 py-0.5 text-[10px] capitalize">{clip.type.replace("_", " ")}</span>
                         </div>
-                        <p className="text-sm italic text-slate-700">{clip.quote}</p>
-                        <p className="text-[10px] text-slate-500 mt-1">Best for: {clip.suggestedPlatform}</p>
+                        <p className="text-sm italic text-zinc-300">{clip.quote}</p>
+                        <p className="text-[10px] text-zinc-500 mt-1">Best for: {clip.suggestedPlatform}</p>
                       </div>
                     ))}
                   </div>
@@ -686,11 +686,11 @@ export function Dashboard() {
               {/* AI Co-Host Simulator */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">AI Co-Host Simulator</h2>
-                <p className="text-xs text-slate-500 mb-3">Test episode ideas with a simulated co-host conversation.</p>
-                <div className="h-64 overflow-y-auto rounded-xl border border-slate-200 bg-slate-50 p-3 mb-3 space-y-2">
-                  {state.coHostMessages.length === 0 && <p className="text-xs text-slate-400 text-center pt-16">Start a conversation with your AI co-host...</p>}
+                <p className="text-xs text-zinc-500 mb-3">Test episode ideas with a simulated co-host conversation.</p>
+                <div className="h-64 overflow-y-auto rounded-xl border border-zinc-800 bg-zinc-950 p-3 mb-3 space-y-2">
+                  {state.coHostMessages.length === 0 && <p className="text-xs text-zinc-500 text-center pt-16">Start a conversation with your AI co-host...</p>}
                   {state.coHostMessages.map((msg) => (
-                    <div key={msg.id} className={`rounded-lg px-3 py-2 text-sm max-w-[85%] ${msg.role === "user" ? "ml-auto bg-[color:var(--accent)] text-white" : "mr-auto bg-white border border-slate-200 text-slate-700"}`}>
+                    <div key={msg.id} className={`rounded-lg px-3 py-2 text-sm max-w-[85%] ${msg.role === "user" ? "ml-auto bg-[color:var(--accent)] text-white" : "mr-auto bg-zinc-900 border border-zinc-800 text-zinc-300"}`}>
                       {msg.content}
                     </div>
                   ))}
@@ -705,15 +705,15 @@ export function Dashboard() {
               {/* Smart Scheduling */}
               <div className={`${card} lg:col-span-2`}>
                 <h2 className="text-lg font-semibold mb-1">Smart Scheduling</h2>
-                <p className="text-xs text-slate-500 mb-3">AI-recommended best publish times based on listener analytics.</p>
+                <p className="text-xs text-zinc-500 mb-3">AI-recommended best publish times based on listener analytics.</p>
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {suggestBestPublishTimes().map((slot) => (
-                    <div key={slot.day + slot.time} className="rounded-xl border border-slate-200 p-3 hover:bg-slate-50">
+                    <div key={slot.day + slot.time} className="rounded-xl border border-zinc-800 p-3 hover:bg-zinc-950">
                       <div className="flex items-center justify-between mb-1">
                         <span className="font-medium text-sm">{slot.day} at {slot.time}</span>
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${slot.score >= 90 ? "bg-emerald-100 text-emerald-700" : slot.score >= 80 ? "bg-blue-100 text-blue-700" : "bg-slate-100 text-slate-600"}`}>{slot.score}%</span>
+                        <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${slot.score >= 90 ? "bg-emerald-900 text-emerald-400" : slot.score >= 80 ? "bg-blue-900 text-blue-400" : "bg-zinc-800 text-zinc-400"}`}>{slot.score}%</span>
                       </div>
-                      <p className="text-xs text-slate-500">{slot.reason}</p>
+                      <p className="text-xs text-zinc-500">{slot.reason}</p>
                     </div>
                   ))}
                 </div>
@@ -740,29 +740,29 @@ export function Dashboard() {
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-3">Guest CRM ({state.guests.length})</h2>
                 <div className="max-h-[600px] overflow-auto space-y-2">
-                  {state.guests.length === 0 && <p className="text-sm text-slate-500">No guests yet. Add your first guest.</p>}
+                  {state.guests.length === 0 && <p className="text-sm text-zinc-500">No guests yet. Add your first guest.</p>}
                   {state.guests.map((g) => (
-                    <div key={g.id} className="rounded-xl border border-slate-200 p-3">
+                    <div key={g.id} className="rounded-xl border border-zinc-800 p-3">
                       <div className="flex items-start justify-between gap-2">
                         <div>
                           <p className="font-medium">{g.name}</p>
-                          <p className="text-xs text-slate-500">{g.role}{g.company ? ` at ${g.company}` : ""}</p>
-                          {g.email && <p className="text-xs text-slate-400">{g.email}</p>}
+                          <p className="text-xs text-zinc-500">{g.role}{g.company ? ` at ${g.company}` : ""}</p>
+                          {g.email && <p className="text-xs text-zinc-500">{g.email}</p>}
                         </div>
                         <div className="flex items-center gap-2 shrink-0">
-                          <select value={g.bookingStatus} onChange={(e) => updateGuestBooking(g.id, e.target.value as Guest["bookingStatus"])} className="rounded border border-slate-200 px-1 py-0.5 text-[10px]">
+                          <select value={g.bookingStatus} onChange={(e) => updateGuestBooking(g.id, e.target.value as Guest["bookingStatus"])} className="rounded border border-zinc-800 px-1 py-0.5 text-[10px]">
                             <option value="potential">Potential</option>
                             <option value="contacted">Contacted</option>
                             <option value="confirmed">Confirmed</option>
                             <option value="declined">Declined</option>
                           </select>
-                          <button onClick={() => toggleReleaseForm(g.id)} className={`text-xs px-2 py-0.5 rounded-full ${g.releaseFormSigned ? "bg-emerald-100 text-emerald-700" : "bg-red-100 text-red-700"}`}>
+                          <button onClick={() => toggleReleaseForm(g.id)} className={`text-xs px-2 py-0.5 rounded-full ${g.releaseFormSigned ? "bg-emerald-900 text-emerald-400" : "bg-red-900 text-red-400"}`}>
                             {g.releaseFormSigned ? "✓ Signed" : "✗ Unsigned"}
                           </button>
                         </div>
                       </div>
-                      {g.bio && <p className="text-xs text-slate-600 mt-1 line-clamp-2">{g.bio}</p>}
-                      {g.tags.length > 0 && <div className="flex flex-wrap gap-1 mt-1">{g.tags.map((t) => <span key={t} className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px]">{t}</span>)}</div>}
+                      {g.bio && <p className="text-xs text-zinc-400 mt-1 line-clamp-2">{g.bio}</p>}
+                      {g.tags.length > 0 && <div className="flex flex-wrap gap-1 mt-1">{g.tags.map((t) => <span key={t} className="rounded-full bg-zinc-800 px-2 py-0.5 text-[10px]">{t}</span>)}</div>}
                     </div>
                   ))}
                 </div>
@@ -791,18 +791,18 @@ export function Dashboard() {
               </div>
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-3">Season Planner</h2>
-                {state.seasons.length === 0 && <p className="text-sm text-slate-500">No seasons planned yet.</p>}
+                {state.seasons.length === 0 && <p className="text-sm text-zinc-500">No seasons planned yet.</p>}
                 <div className="space-y-4">
                   {state.seasons.filter((s) => s.showId === state.activeShowId).map((season) => (
-                    <div key={season.id} className="rounded-xl border border-slate-200 p-4">
+                    <div key={season.id} className="rounded-xl border border-zinc-800 p-4">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-semibold">S{season.number}: {season.name}</h3>
                         {season.theme && <span className="rounded-full bg-[color:var(--accent)]/10 px-2 py-0.5 text-xs text-[color:var(--accent)]">{season.theme}</span>}
                       </div>
-                      {season.description && <p className="text-sm text-slate-600 mb-2">{season.description}</p>}
-                      {season.storyArc && <div className="rounded-lg bg-slate-50 p-3 text-sm"><p className={labelCls}>Story Arc</p><p className="text-slate-600">{season.storyArc}</p></div>}
-                      {(season.startDate || season.endDate) && <p className="text-xs text-slate-500 mt-2">{season.startDate} → {season.endDate}</p>}
-                      <p className="text-xs text-slate-400 mt-1">{season.episodeIds.length} episodes assigned</p>
+                      {season.description && <p className="text-sm text-zinc-400 mb-2">{season.description}</p>}
+                      {season.storyArc && <div className="rounded-lg bg-zinc-950 p-3 text-sm"><p className={labelCls}>Story Arc</p><p className="text-zinc-400">{season.storyArc}</p></div>}
+                      {(season.startDate || season.endDate) && <p className="text-xs text-zinc-500 mt-2">{season.startDate} → {season.endDate}</p>}
+                      <p className="text-xs text-zinc-500 mt-1">{season.episodeIds.length} episodes assigned</p>
                     </div>
                   ))}
                 </div>
@@ -822,19 +822,19 @@ export function Dashboard() {
               {/* Content Performance Prediction */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-3">Content Performance Prediction</h2>
-                {showEpisodes.length === 0 ? <p className="text-sm text-slate-500">Add episodes to see predictions.</p> : (
+                {showEpisodes.length === 0 ? <p className="text-sm text-zinc-500">Add episodes to see predictions.</p> : (
                   <div className="space-y-3">
                     {showEpisodes.slice(0, 5).map((ep) => {
                       const pred = predictContentPerformance(ep.title, ep.durationMinutes, !!ep.guest);
                       return (
-                        <div key={ep.id} className="rounded-xl border border-slate-200 p-3">
+                        <div key={ep.id} className="rounded-xl border border-zinc-800 p-3">
                           <p className="font-medium text-sm mb-2">{ep.title}</p>
                           <div className="grid grid-cols-3 gap-3 mb-2">
-                            <div><p className="text-[10px] text-slate-500">Est. Downloads</p><p className="text-lg font-bold">{pred.predictedDownloads.toLocaleString()}</p></div>
-                            <div><p className="text-[10px] text-slate-500">Engagement</p><p className="text-lg font-bold">{pred.engagementScore}%</p></div>
-                            <div><p className="text-[10px] text-slate-500">Viral Potential</p><p className="text-lg font-bold">{pred.viralPotential}%</p></div>
+                            <div><p className="text-[10px] text-zinc-500">Est. Downloads</p><p className="text-lg font-bold">{pred.predictedDownloads.toLocaleString()}</p></div>
+                            <div><p className="text-[10px] text-zinc-500">Engagement</p><p className="text-lg font-bold">{pred.engagementScore}%</p></div>
+                            <div><p className="text-[10px] text-zinc-500">Viral Potential</p><p className="text-lg font-bold">{pred.viralPotential}%</p></div>
                           </div>
-                          <div className="space-y-1">{pred.tips.slice(0, 2).map((tip, i) => <p key={i} className="text-xs text-slate-500">💡 {tip}</p>)}</div>
+                          <div className="space-y-1">{pred.tips.slice(0, 2).map((tip, i) => <p key={i} className="text-xs text-zinc-500">💡 {tip}</p>)}</div>
                         </div>
                       );
                     })}
@@ -845,17 +845,17 @@ export function Dashboard() {
               {/* Episode Analytics */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-3">Listener Engagement Insights</h2>
-                {showEpisodes.length === 0 ? <p className="text-sm text-slate-500">No data yet.</p> : (
+                {showEpisodes.length === 0 ? <p className="text-sm text-zinc-500">No data yet.</p> : (
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
-                      <thead><tr className="border-b border-slate-200 text-left text-xs text-slate-500 uppercase">
+                      <thead><tr className="border-b border-zinc-800 text-left text-xs text-zinc-500 uppercase">
                         <th className="py-2 pr-4">Episode</th><th className="py-2 pr-4">Downloads</th><th className="py-2 pr-4">Avg Listen</th><th className="py-2 pr-4">Completion</th><th className="py-2 pr-4">Drop-off</th><th className="py-2">Rating</th>
                       </tr></thead>
                       <tbody>
                         {showEpisodes.slice(0, 10).map((ep) => {
                           const a = generateEpisodeAnalytics(ep);
                           return (
-                            <tr key={ep.id} className="border-b border-slate-100">
+                            <tr key={ep.id} className="border-b border-zinc-800">
                               <td className="py-2 pr-4 font-medium truncate max-w-[200px]">{ep.title}</td>
                               <td className="py-2 pr-4">{a.downloads.toLocaleString()}</td>
                               <td className="py-2 pr-4">{a.avgListenMinutes}m</td>
@@ -889,26 +889,26 @@ export function Dashboard() {
               {/* One-Click Publishing */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">One-Click Publishing</h2>
-                <p className="text-xs text-slate-500 mb-4">Connect platforms and publish episodes with one click.</p>
+                <p className="text-xs text-zinc-500 mb-4">Connect platforms and publish episodes with one click.</p>
                 <div className="grid gap-4 sm:grid-cols-3">
                   {state.publishingTargets.map((target) => (
-                    <div key={target.platform} className="rounded-xl border border-slate-200 p-4">
+                    <div key={target.platform} className="rounded-xl border border-zinc-800 p-4">
                       <div className="flex items-center justify-between mb-3">
                         <p className="font-medium text-sm capitalize">{target.platform.replace("_", " ")}</p>
-                        <button onClick={() => togglePublishingTarget(target.platform)} className={`text-xs px-2 py-1 rounded-full ${target.connected ? "bg-emerald-100 text-emerald-700" : "bg-slate-100 text-slate-500"}`}>
+                        <button onClick={() => togglePublishingTarget(target.platform)} className={`text-xs px-2 py-1 rounded-full ${target.connected ? "bg-emerald-900 text-emerald-400" : "bg-zinc-800 text-zinc-500"}`}>
                           {target.connected ? "Connected" : "Connect"}
                         </button>
                       </div>
                       {target.connected && showEpisodes.filter((ep) => ep.status === "ready").length > 0 && (
                         <div className="space-y-1">
                           {showEpisodes.filter((ep) => ep.status === "ready").map((ep) => (
-                            <button key={ep.id} onClick={() => publishToTarget(target.platform, ep.id)} className="w-full rounded-lg border border-slate-200 px-2 py-1.5 text-xs hover:bg-slate-50 text-left truncate">
+                            <button key={ep.id} onClick={() => publishToTarget(target.platform, ep.id)} className="w-full rounded-lg border border-zinc-800 px-2 py-1.5 text-xs hover:bg-zinc-950 text-left truncate">
                               Publish: {ep.title}
                             </button>
                           ))}
                         </div>
                       )}
-                      {target.lastPublishedAt && <p className="text-[10px] text-slate-400 mt-2">Last: {format(parseISO(target.lastPublishedAt), "MMM d, HH:mm")}</p>}
+                      {target.lastPublishedAt && <p className="text-[10px] text-zinc-500 mt-2">Last: {format(parseISO(target.lastPublishedAt), "MMM d, HH:mm")}</p>}
                     </div>
                   ))}
                 </div>
@@ -917,7 +917,7 @@ export function Dashboard() {
               {/* Social Media Scheduling */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">Social Media Auto-Scheduling</h2>
-                <p className="text-xs text-slate-500 mb-4">Schedule episode clips across social platforms.</p>
+                <p className="text-xs text-zinc-500 mb-4">Schedule episode clips across social platforms.</p>
                 <form onSubmit={addSocialPost} className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 mb-4">
                   <select value={socialDraft.episodeId} onChange={(e) => setSocialDraft((p) => ({ ...p, episodeId: e.target.value }))} className={inputCls}>
                     <option value="">Episode (optional)</option>
@@ -938,10 +938,10 @@ export function Dashboard() {
                 {state.socialPosts.length > 0 && (
                   <div className="space-y-2">
                     {state.socialPosts.map((p) => (
-                      <div key={p.id} className="flex items-center gap-3 rounded-lg border border-slate-200 p-2">
-                        <span className="text-xs font-medium uppercase text-slate-500 w-16">{p.platform}</span>
+                      <div key={p.id} className="flex items-center gap-3 rounded-lg border border-zinc-800 p-2">
+                        <span className="text-xs font-medium uppercase text-zinc-500 w-16">{p.platform}</span>
                         <p className="text-sm truncate flex-1">{p.content}</p>
-                        <span className={`rounded-full px-2 py-0.5 text-[10px] ${p.status === "posted" ? "bg-emerald-100 text-emerald-700" : "bg-blue-100 text-blue-700"}`}>{p.status}</span>
+                        <span className={`rounded-full px-2 py-0.5 text-[10px] ${p.status === "posted" ? "bg-emerald-900 text-emerald-400" : "bg-blue-900 text-blue-400"}`}>{p.status}</span>
                       </div>
                     ))}
                   </div>
@@ -951,12 +951,12 @@ export function Dashboard() {
               {/* Calendar Integrations */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">Calendar & Notion Sync</h2>
-                <p className="text-xs text-slate-500 mb-4">Connect external calendars via ICS feed.</p>
+                <p className="text-xs text-zinc-500 mb-4">Connect external calendars via ICS feed.</p>
                 <div className="space-y-3">
                   {(Object.keys(providerLabels) as CalendarProvider[]).map((provider) => {
                     const integ = state.integrations.find((i) => i.provider === provider);
                     return (
-                      <div key={provider} className="rounded-xl border border-slate-200 p-3">
+                      <div key={provider} className="rounded-xl border border-zinc-800 p-3">
                         <div className="flex items-center justify-between mb-2">
                           <p className="font-medium text-sm">{providerLabels[provider]}</p>
                           {integ?.connected && <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] text-emerald-700">Connected</span>}
@@ -980,17 +980,17 @@ export function Dashboard() {
               {/* Equipment Checklist */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-1">Pre-Recording Equipment Checklist</h2>
-                <p className="text-xs text-slate-500 mb-3">Confirm everything is ready before recording.</p>
+                <p className="text-xs text-zinc-500 mb-3">Confirm everything is ready before recording.</p>
                 <div className="grid gap-2 sm:grid-cols-2">
                   {state.equipmentChecklist.map((item) => (
-                    <label key={item.id} className="flex items-center gap-2 rounded-lg border border-slate-200 p-2 cursor-pointer hover:bg-slate-50">
+                    <label key={item.id} className="flex items-center gap-2 rounded-lg border border-zinc-800 p-2 cursor-pointer hover:bg-zinc-950">
                       <input type="checkbox" checked={item.checked} onChange={() => toggleEquipment(item.id)} className="accent-[color:var(--accent)]" />
-                      <span className={`text-sm ${item.checked ? "line-through text-slate-400" : ""}`}>{item.name}</span>
-                      <span className="ml-auto rounded-full bg-slate-100 px-1.5 py-0.5 text-[9px] capitalize text-slate-500">{item.category}</span>
+                      <span className={`text-sm ${item.checked ? "line-through text-zinc-500" : ""}`}>{item.name}</span>
+                      <span className="ml-auto rounded-full bg-zinc-800 px-1.5 py-0.5 text-[9px] capitalize text-zinc-500">{item.category}</span>
                     </label>
                   ))}
                 </div>
-                <p className="mt-2 text-xs text-slate-500">{state.equipmentChecklist.filter((i) => i.checked).length}/{state.equipmentChecklist.length} completed</p>
+                <p className="mt-2 text-xs text-zinc-500">{state.equipmentChecklist.filter((i) => i.checked).length}/{state.equipmentChecklist.length} completed</p>
               </div>
             </div>
           )}
@@ -998,11 +998,11 @@ export function Dashboard() {
           {view === "content-graph" && (
             <div className={card}>
               <h2 className="text-lg font-semibold mb-1">Podcast Content Graph</h2>
-              <p className="text-xs text-slate-500 mb-4">Visual map of connections between episodes, guests, and topics. Add tags to episodes and guests to see connections.</p>
+              <p className="text-xs text-zinc-500 mb-4">Visual map of connections between episodes, guests, and topics. Add tags to episodes and guests to see connections.</p>
               {contentGraph.nodes.length === 0 ? (
-                <p className="text-sm text-slate-500 py-10 text-center">Add episodes with tags and guests to see your content graph.</p>
+                <p className="text-sm text-zinc-500 py-10 text-center">Add episodes with tags and guests to see your content graph.</p>
               ) : (
-                <svg viewBox="0 0 800 600" className="w-full rounded-xl border border-slate-200 bg-slate-50" style={{ minHeight: 400 }}>
+                <svg viewBox="0 0 800 600" className="w-full rounded-xl border border-zinc-800 bg-zinc-950" style={{ minHeight: 400 }}>
                   {contentGraph.edges.map((edge, i) => {
                     const from = contentGraph.nodes.find((n) => n.id === edge.from);
                     const to = contentGraph.nodes.find((n) => n.id === edge.to);
@@ -1013,13 +1013,13 @@ export function Dashboard() {
                     <g key={node.id}>
                       <circle cx={node.x} cy={node.y} r={node.type === "episode" ? 20 : node.type === "guest" ? 16 : 12}
                         fill={node.type === "episode" ? accentColor : node.type === "guest" ? "#10b981" : "#f59e0b"} opacity="0.85" />
-                      <text x={node.x} y={node.y + (node.type === "episode" ? 32 : 28)} textAnchor="middle" className="text-[10px] fill-slate-600">{node.label.slice(0, 15)}</text>
+                      <text x={node.x} y={node.y + (node.type === "episode" ? 32 : 28)} textAnchor="middle" className="text-[10px] fill-zinc-400">{node.label.slice(0, 15)}</text>
                     </g>
                   ))}
                   <g transform="translate(20, 560)">
-                    <circle cx="0" cy="0" r="6" fill={accentColor} /><text x="12" y="4" className="text-[10px] fill-slate-600">Episode</text>
-                    <circle cx="80" cy="0" r="6" fill="#10b981" /><text x="92" y="4" className="text-[10px] fill-slate-600">Guest</text>
-                    <circle cx="140" cy="0" r="6" fill="#f59e0b" /><text x="152" y="4" className="text-[10px] fill-slate-600">Topic</text>
+                    <circle cx="0" cy="0" r="6" fill={accentColor} /><text x="12" y="4" className="text-[10px] fill-zinc-400">Episode</text>
+                    <circle cx="80" cy="0" r="6" fill="#10b981" /><text x="92" y="4" className="text-[10px] fill-zinc-400">Guest</text>
+                    <circle cx="140" cy="0" r="6" fill="#f59e0b" /><text x="152" y="4" className="text-[10px] fill-zinc-400">Topic</text>
                   </g>
                 </svg>
               )}
@@ -1029,24 +1029,24 @@ export function Dashboard() {
           {view === "trending" && (
             <div className={card}>
               <h2 className="text-lg font-semibold mb-1">Viral Topic Radar</h2>
-              <p className="text-xs text-slate-500 mb-3">Trending podcast topics from Reddit, Google, and TikTok.</p>
+              <p className="text-xs text-zinc-500 mb-3">Trending podcast topics from Reddit, Google, and TikTok.</p>
               <button onClick={() => setTrendingTopics(generateTrendingTopics())} className={`${btnPrimary} mb-4`}>Refresh Topics</button>
-              {trendingTopics.length === 0 && <p className="text-sm text-slate-500">Click refresh to load trending topics.</p>}
+              {trendingTopics.length === 0 && <p className="text-sm text-zinc-500">Click refresh to load trending topics.</p>}
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {trendingTopics.map((t) => (
-                  <div key={t.id} className="rounded-xl border border-slate-200 p-3 hover:shadow-sm transition-shadow">
+                  <div key={t.id} className="rounded-xl border border-zinc-800 p-3 hover:shadow-sm transition-shadow">
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-medium uppercase text-slate-400">{t.source}</span>
-                      <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${t.trend === "rising" ? "bg-emerald-100 text-emerald-700" : t.trend === "stable" ? "bg-blue-100 text-blue-700" : "bg-red-100 text-red-700"}`}>
+                      <span className="text-xs font-medium uppercase text-zinc-500">{t.source}</span>
+                      <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${t.trend === "rising" ? "bg-emerald-900 text-emerald-400" : t.trend === "stable" ? "bg-blue-900 text-blue-400" : "bg-red-900 text-red-400"}`}>
                         {t.trend === "rising" ? "↑" : t.trend === "stable" ? "→" : "↓"} {t.trend}
                       </span>
                     </div>
                     <p className="font-medium text-sm">{t.topic}</p>
                     <div className="mt-2 flex items-center gap-2">
-                      <div className="flex-1 h-1.5 rounded-full bg-slate-100"><div className="h-1.5 rounded-full bg-[color:var(--accent)]" style={{ width: `${t.score}%` }} /></div>
-                      <span className="text-xs font-semibold text-slate-600">{t.score}</span>
+                      <div className="flex-1 h-1.5 rounded-full bg-zinc-800"><div className="h-1.5 rounded-full bg-[color:var(--accent)]" style={{ width: `${t.score}%` }} /></div>
+                      <span className="text-xs font-semibold text-zinc-400">{t.score}</span>
                     </div>
-                    <div className="flex flex-wrap gap-1 mt-2">{t.relatedKeywords.map((kw) => <span key={kw} className="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-500">{kw}</span>)}</div>
+                    <div className="flex flex-wrap gap-1 mt-2">{t.relatedKeywords.map((kw) => <span key={kw} className="rounded bg-zinc-800 px-1.5 py-0.5 text-[10px] text-zinc-500">{kw}</span>)}</div>
                     <button onClick={() => { setAiTopic(t.topic); setView("ai-studio"); }} className="mt-2 text-xs text-[color:var(--accent)] hover:underline">Plan episode about this →</button>
                   </div>
                 ))}
@@ -1065,21 +1065,21 @@ export function Dashboard() {
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-3">Burnout Monitor</h2>
                 <div className="grid gap-4 sm:grid-cols-2 mb-4">
-                  <div className={`rounded-xl p-4 ${burnout.overproductionRisk ? "bg-red-50 border border-red-200" : "bg-emerald-50 border border-emerald-200"}`}>
+                  <div className={`rounded-xl p-4 ${burnout.overproductionRisk ? "bg-red-950 border border-red-800" : "bg-emerald-950 border border-emerald-800"}`}>
                     <p className="text-sm font-medium">{burnout.overproductionRisk ? "⚠️ Overproduction Risk" : "✓ Workload OK"}</p>
-                    <p className="text-xs text-slate-600 mt-1">{burnout.overproductionRisk ? "High output detected. Consider reducing to prevent burnout." : "Your production pace looks sustainable."}</p>
+                    <p className="text-xs text-zinc-400 mt-1">{burnout.overproductionRisk ? "High output detected. Consider reducing to prevent burnout." : "Your production pace looks sustainable."}</p>
                   </div>
-                  <div className={`rounded-xl p-4 ${burnout.missedDeadlines > 2 ? "bg-amber-50 border border-amber-200" : "bg-emerald-50 border border-emerald-200"}`}>
+                  <div className={`rounded-xl p-4 ${burnout.missedDeadlines > 2 ? "bg-amber-950 border border-amber-800" : "bg-emerald-950 border border-emerald-800"}`}>
                     <p className="text-sm font-medium">{burnout.missedDeadlines > 2 ? "⚠️ Deadline Issues" : "✓ On Schedule"}</p>
-                    <p className="text-xs text-slate-600 mt-1">{burnout.missedDeadlines > 2 ? `${burnout.missedDeadlines} episodes past due. Reschedule to reduce stress.` : "All deadlines are manageable."}</p>
+                    <p className="text-xs text-zinc-400 mt-1">{burnout.missedDeadlines > 2 ? `${burnout.missedDeadlines} episodes past due. Reschedule to reduce stress.` : "All deadlines are manageable."}</p>
                   </div>
                 </div>
                 <h3 className="font-semibold text-sm mb-2">Recommendations</h3>
                 <div className="space-y-2">
                   {burnout.recommendations.map((rec, i) => (
-                    <div key={i} className="flex items-start gap-2 rounded-lg border border-slate-200 p-3">
+                    <div key={i} className="flex items-start gap-2 rounded-lg border border-zinc-800 p-3">
                       <span className="text-base shrink-0">💡</span>
-                      <p className="text-sm text-slate-700">{rec}</p>
+                      <p className="text-sm text-zinc-300">{rec}</p>
                     </div>
                   ))}
                 </div>
@@ -1089,7 +1089,7 @@ export function Dashboard() {
                   <h2 className="text-lg font-semibold mb-3">Conflict Detection</h2>
                   <div className="space-y-2">
                     {conflicts.map((c, i) => (
-                      <div key={i} className={`flex items-start gap-2 rounded-lg p-3 ${c.severity === "error" ? "bg-red-50 border border-red-200" : "bg-amber-50 border border-amber-200"}`}>
+                      <div key={i} className={`flex items-start gap-2 rounded-lg p-3 ${c.severity === "error" ? "bg-red-950 border border-red-800" : "bg-amber-950 border border-amber-800"}`}>
                         <span className="text-base shrink-0">{c.severity === "error" ? "🚨" : "⚠️"}</span>
                         <p className="text-sm">{c.message}</p>
                       </div>
@@ -1105,7 +1105,7 @@ export function Dashboard() {
               {/* Subscription */}
               <div className={card}>
                 <h2 className="text-lg font-semibold mb-3">Subscription</h2>
-                <p className="text-sm text-slate-500 mb-4">Current: <span className="font-semibold uppercase">{state.plan}</span></p>
+                <p className="text-sm text-zinc-500 mb-4">Current: <span className="font-semibold uppercase">{state.plan}</span></p>
                 <div className="flex flex-wrap gap-2">
                   {(["monthly", "yearly"] as BillingCycle[]).map((cycle) => (
                     <button key={cycle} onClick={() => handleCheckout(cycle)} disabled={isCheckingOut} className={btnPrimary}>
@@ -1121,14 +1121,14 @@ export function Dashboard() {
                 <h2 className="text-lg font-semibold mb-3">Multi-Show Management</h2>
                 <div className="space-y-2 mb-4">
                   {state.shows.map((s) => (
-                    <div key={s.id} className={`rounded-lg border p-2 flex items-center gap-2 cursor-pointer ${s.id === state.activeShowId ? "border-[color:var(--accent)] bg-[color:var(--accent)]/5" : "border-slate-200"}`}
+                    <div key={s.id} className={`rounded-lg border p-2 flex items-center gap-2 cursor-pointer ${s.id === state.activeShowId ? "border-[color:var(--accent)] bg-[color:var(--accent)]/5" : "border-zinc-800"}`}
                       onClick={() => setState((prev) => ({ ...prev, activeShowId: s.id }))}>
                       <div className="h-8 w-8 rounded-lg shrink-0" style={{ backgroundColor: s.coverColor }} />
-                      <div><p className="text-sm font-medium">{s.name}</p><p className="text-[10px] text-slate-500">{s.description}</p></div>
+                      <div><p className="text-sm font-medium">{s.name}</p><p className="text-[10px] text-zinc-500">{s.description}</p></div>
                     </div>
                   ))}
                 </div>
-                <form onSubmit={addShow} className="space-y-2 border-t border-slate-200 pt-3">
+                <form onSubmit={addShow} className="space-y-2 border-t border-zinc-800 pt-3">
                   <input value={showDraft.name} onChange={(e) => setShowDraft((p) => ({ ...p, name: e.target.value }))} placeholder="New show name" className={inputCls} />
                   <input value={showDraft.description} onChange={(e) => setShowDraft((p) => ({ ...p, description: e.target.value }))} placeholder="Description" className={inputCls} />
                   <div className="flex gap-2 items-center">
@@ -1154,7 +1154,7 @@ export function Dashboard() {
                   <div><p className={labelCls}>Theme</p>
                     <div className="flex gap-2">{themeOptions.map((t) => (
                       <button key={t} onClick={() => { if (supportsPremiumTheme(state.plan, t)) setState((p) => ({ ...p, customization: { ...p.customization, theme: t } })); else flash("Premium themes require Pro."); }}
-                        className={`h-8 w-8 rounded-full border-2 ${state.customization.theme === t ? "border-slate-900" : "border-transparent"}`} style={{ backgroundColor: THEME_ACCENTS[t] }} />
+                        className={`h-8 w-8 rounded-full border-2 ${state.customization.theme === t ? "border-white" : "border-transparent"}`} style={{ backgroundColor: THEME_ACCENTS[t] }} />
                     ))}</div>
                   </div>
                 </div>
@@ -1171,7 +1171,7 @@ export function Dashboard() {
                   <button onClick={requestNotifications} className={btnSecondary}>Enable Browser Reminders</button>
                   <label className="block"><p className={labelCls}>Lead Times (min, comma separated)</p>
                     <input value={state.notificationPreferences.leadTimesMinutes.join(",")} onChange={(e) => setState((p) => ({ ...p, notificationPreferences: { ...p.notificationPreferences, leadTimesMinutes: e.target.value.split(",").map((v) => Number(v.trim())).filter((v) => Number.isFinite(v) && v > 0) } }))} className={inputCls} /></label>
-                  <p className="text-xs text-slate-500">Reminders are sent to hosts, guests, and editors based on episode schedule and lead times configured above.</p>
+                  <p className="text-xs text-zinc-500">Reminders are sent to hosts, guests, and editors based on episode schedule and lead times configured above.</p>
                 </div>
               </div>
             </div>
@@ -1187,7 +1187,7 @@ function OverviewPanel({ state, showEpisodes, consistency, burnout, conflicts, s
   burnout: ReturnType<typeof calculateBurnoutMetrics>; conflicts: ReturnType<typeof detectConflicts>; setView: (v: DashboardView) => void;
 }) {
   const upcoming = [...showEpisodes].filter((ep) => new Date(ep.publishAt) > new Date()).sort((a, b) => new Date(a.publishAt).getTime() - new Date(b.publishAt).getTime()).slice(0, 5);
-  const card = "rounded-2xl border border-slate-200 bg-white p-5 shadow-sm";
+  const card = "rounded-2xl border border-zinc-800 bg-zinc-900 p-5";
   return (
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -1203,11 +1203,11 @@ function OverviewPanel({ state, showEpisodes, consistency, burnout, conflicts, s
             <h2 className="font-semibold">Upcoming Episodes</h2>
             <button onClick={() => setView("episodes")} className="text-xs text-[color:var(--accent)] hover:underline">View all →</button>
           </div>
-          {upcoming.length === 0 && <p className="text-sm text-slate-500">No upcoming episodes.</p>}
+          {upcoming.length === 0 && <p className="text-sm text-zinc-500">No upcoming episodes.</p>}
           {upcoming.map((ep) => (
-            <div key={ep.id} className="flex items-center gap-3 border-b border-slate-100 py-2 last:border-0">
+            <div key={ep.id} className="flex items-center gap-3 border-b border-zinc-800 py-2 last:border-0">
               <div className="h-2 w-2 rounded-full shrink-0" style={{ backgroundColor: STAGE_COLORS[ep.status] }} />
-              <div className="min-w-0 flex-1"><p className="text-sm font-medium truncate">{ep.title}</p><p className="text-[10px] text-slate-500">{format(parseISO(ep.publishAt), "MMM d, HH:mm")}</p></div>
+              <div className="min-w-0 flex-1"><p className="text-sm font-medium truncate">{ep.title}</p><p className="text-[10px] text-zinc-500">{format(parseISO(ep.publishAt), "MMM d, HH:mm")}</p></div>
               <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase text-white shrink-0" style={{ backgroundColor: STAGE_COLORS[ep.status] }}>{ep.status}</span>
             </div>
           ))}
@@ -1225,7 +1225,7 @@ function OverviewPanel({ state, showEpisodes, consistency, burnout, conflicts, s
                 <div key={stage} className="flex items-center gap-2">
                   <div className="h-3 w-3 rounded-full shrink-0" style={{ backgroundColor: STAGE_COLORS[stage] }} />
                   <span className="text-sm capitalize flex-1">{stage}</span>
-                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium">{count}</span>
+                  <span className="rounded-full bg-zinc-800 px-2 py-0.5 text-xs font-medium">{count}</span>
                 </div>
               );
             })}
@@ -1237,20 +1237,20 @@ function OverviewPanel({ state, showEpisodes, consistency, burnout, conflicts, s
         <div className={card}>
           <h2 className="font-semibold mb-2">⚠️ Active Conflicts ({conflicts.length})</h2>
           <div className="space-y-1">
-            {conflicts.slice(0, 3).map((c, i) => <p key={i} className="text-sm text-amber-700">{c.message}</p>)}
+            {conflicts.slice(0, 3).map((c, i) => <p key={i} className="text-sm text-amber-400">{c.message}</p>)}
           </div>
         </div>
       )}
 
       <div className="grid gap-6 lg:grid-cols-3">
         <button onClick={() => setView("ai-studio")} className={`${card} text-left hover:shadow-md transition-shadow`}>
-          <p className="text-2xl mb-2">🤖</p><h3 className="font-semibold">AI Studio</h3><p className="text-xs text-slate-500 mt-1">Generate outlines, research guests, simulate co-host</p>
+          <p className="text-2xl mb-2">🤖</p><h3 className="font-semibold">AI Studio</h3><p className="text-xs text-zinc-500 mt-1">Generate outlines, research guests, simulate co-host</p>
         </button>
         <button onClick={() => setView("trending")} className={`${card} text-left hover:shadow-md transition-shadow`}>
-          <p className="text-2xl mb-2">🔥</p><h3 className="font-semibold">Trending Topics</h3><p className="text-xs text-slate-500 mt-1">Discover what&apos;s hot on Reddit, Google, TikTok</p>
+          <p className="text-2xl mb-2">🔥</p><h3 className="font-semibold">Trending Topics</h3><p className="text-xs text-zinc-500 mt-1">Discover what&apos;s hot on Reddit, Google, TikTok</p>
         </button>
         <button onClick={() => setView("analytics")} className={`${card} text-left hover:shadow-md transition-shadow`}>
-          <p className="text-2xl mb-2">📊</p><h3 className="font-semibold">Analytics</h3><p className="text-xs text-slate-500 mt-1">Performance predictions and listener insights</p>
+          <p className="text-2xl mb-2">📊</p><h3 className="font-semibold">Analytics</h3><p className="text-xs text-zinc-500 mt-1">Performance predictions and listener insights</p>
         </button>
       </div>
     </div>
@@ -1259,10 +1259,10 @@ function OverviewPanel({ state, showEpisodes, consistency, burnout, conflicts, s
 
 function StatCard({ label, value, sub }: { label: string; value: string; sub: string }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <p className="text-xs font-semibold uppercase text-slate-500">{label}</p>
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-4">
+      <p className="text-xs font-semibold uppercase text-zinc-500">{label}</p>
       <p className="mt-1 text-2xl font-bold">{value}</p>
-      <p className="text-xs text-slate-400">{sub}</p>
+      <p className="text-xs text-zinc-500">{sub}</p>
     </div>
   );
 }
